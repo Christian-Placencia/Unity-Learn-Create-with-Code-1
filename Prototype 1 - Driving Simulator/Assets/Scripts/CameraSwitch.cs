@@ -14,24 +14,16 @@ public class CameraSwitch : MonoBehaviour
     // Slots for the two cameras.
     public GameObject camera1;
     public GameObject camera2;
+    public string switchKey = "SwitchCamera";
 
     void Update()
     {
         // Check for user input.
-        if (Input.GetButtonDown("CameraSwitch"))
+        if (Input.GetButtonDown(switchKey))
         {
-            // Switch to Camera 2
-            if (camera1.activeSelf == true)
-            {
-                camera1.SetActive(false);
-                camera2.SetActive(true);
-            }
-            // Switch to Camera 1
-            else
-            {
-                camera1.SetActive(true);
-                camera2.SetActive(false);
-            }
+            // Switch cameras.
+            camera1.SetActive(!camera1.activeSelf);
+            camera2.SetActive(!camera2.activeSelf);
         }
     }
 }
